@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(INTERPOLATE_USE_SYSTEM_EIGEN "Prefer system/vcpkg Eigen if available" ON)
+option(INTERPOLATE_BUILD_TESTS "Build the interpolate tests" ON)
 
 set(EIGEN_FOUND_LOCAL FALSE)
 if (INTERPOLATE_USE_SYSTEM_EIGEN)
@@ -79,3 +80,7 @@ install(TARGETS interpolate
 install(DIRECTORY include/
     DESTINATION include
 )
+
+if (INTERPOLATE_BUILD_TESTS)
+	add_subdirectory(test)
+endif()
